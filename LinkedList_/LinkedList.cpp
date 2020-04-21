@@ -3,9 +3,9 @@
 
 using namespace std;
 
-// Конструктор узла для начала создания списка и создания новых узлов 
-// принимаем значение и записываем его в узел, указатель узла содержить нулевой указатель
-// конец списка определяется узлом nullptr
+// ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГіГ§Г«Г  Г¤Г«Гї Г­Г Г·Г Г«Г  Г±Г®Г§Г¤Г Г­ГЁГї Г±ГЇГЁГ±ГЄГ  ГЁ Г±Г®Г§Г¤Г Г­ГЁГї Г­Г®ГўГ»Гµ ГіГ§Г«Г®Гў 
+// ГЇГ°ГЁГ­ГЁГ¬Г ГҐГ¬ Г§Г­Г Г·ГҐГ­ГЁГҐ ГЁ Г§Г ГЇГЁГ±Г»ГўГ ГҐГ¬ ГҐГЈГ® Гў ГіГ§ГҐГ«, ГіГЄГ Г§Г ГІГҐГ«Гј ГіГ§Г«Г  Г±Г®Г¤ГҐГ°Г¦ГЁГІГј Г­ГіГ«ГҐГўГ®Г© ГіГЄГ Г§Г ГІГҐГ«Гј
+// ГЄГ®Г­ГҐГ¶ Г±ГЇГЁГ±ГЄГ  Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІГ±Гї ГіГ§Г«Г®Г¬ nullptr
 
 LinkedList::Node::Node(const ValueType& value, Node* next)
 {
@@ -15,7 +15,7 @@ LinkedList::Node::Node(const ValueType& value, Node* next)
 
 LinkedList::Node::~Node()
 {
-	// ничего не удаляем, т.к. агрегация
+	// Г­ГЁГ·ГҐГЈГ® Г­ГҐ ГіГ¤Г Г«ГїГҐГ¬, ГІ.ГЄ. Г ГЈГ°ГҐГЈГ Г¶ГЁГї
 }
 
 
@@ -35,15 +35,15 @@ void LinkedList::Node::removeNext()
 
 ////////////////////////////////////
 
-// Дефолтный конструктор
+// Г„ГҐГґГ®Г«ГІГ­Г»Г© ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°
 LinkedList::LinkedList() 
 {
 	_head = nullptr;
 	_size = 0;
 }
 
-// Правило пяти												
-// Конструктор копирования
+// ГЏГ°Г ГўГЁГ«Г® ГЇГїГІГЁ												
+// ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГї
 LinkedList::LinkedList(const LinkedList& copyList)
 {
 	this->_size = copyList._size;
@@ -65,10 +65,10 @@ LinkedList::LinkedList(const LinkedList& copyList)
 
 }
 
-// Оператор присваивания копированием						 
+// ГЋГЇГҐГ°Г ГІГ®Г° ГЇГ°ГЁГ±ГўГ ГЁГўГ Г­ГЁГї ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГҐГ¬						 
 LinkedList& LinkedList::operator=(const LinkedList& copyList)
 {
-	//Ето проверка на самоприсваивание
+	//Г…ГІГ® ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г±Г Г¬Г®ГЇГ°ГЁГ±ГўГ ГЁГўГ Г­ГЁГҐ
 	if (this == &copyList) {
 		return *this;
 	}
@@ -80,7 +80,7 @@ LinkedList& LinkedList::operator=(const LinkedList& copyList)
 	return *this;
 }
 
-// Конструктор перемещения
+// ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­ГЁГї
 LinkedList::LinkedList(LinkedList&& moveList) noexcept
 {
 	this->_size = moveList._size;
@@ -90,7 +90,7 @@ LinkedList::LinkedList(LinkedList&& moveList) noexcept
 	moveList._head = nullptr;
 }
 
-//Оператор присваивания перемещением
+//ГЋГЇГҐГ°Г ГІГ®Г° ГЇГ°ГЁГ±ГўГ ГЁГўГ Г­ГЁГї ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­ГЁГҐГ¬
 LinkedList& LinkedList::operator=(LinkedList&& moveList) noexcept
 {
 	if (this == &moveList) {
@@ -125,7 +125,7 @@ void LinkedList::forceNodeDelete(Node* node)
 	forceNodeDelete(nextDeleteNode);
 }
 
-// доступ к значению элемента по индексу
+// Г¤Г®Г±ГІГіГЇ ГЄ Г§Г­Г Г·ГҐГ­ГЁГѕ ГЅГ«ГҐГ¬ГҐГ­ГІГ  ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі
 ValueType& LinkedList::operator[](const size_t pos) const
 {
 	return getNode(pos)->value;
@@ -192,7 +192,7 @@ void LinkedList::pushFront(const ValueType& value)
 }
 
 
-// Удаление
+// Г“Г¤Г Г«ГҐГ­ГЁГҐ
 void LinkedList::remove(const size_t pos)
 {
 	if (pos == 0) {
@@ -202,11 +202,11 @@ void LinkedList::remove(const size_t pos)
 		Node* bufNode = this->_head;
 		for (size_t i = 0; i < pos - 1; ++i) {
 			bufNode = bufNode->next;
-			Node* removeNode = bufNode->next;
-			bufNode->next = removeNode->next;
-			delete removeNode;
-			_size--;
 		}
+		Node* removeNode = bufNode->next;
+		bufNode->next = removeNode->next;
+		delete removeNode;
+		_size--;
 	}
 }
 
@@ -272,7 +272,7 @@ LinkedList::Node* LinkedList::findNode(const ValueType& value) const
 	if (flag == 0) return nullptr;
 }
 
-// разворот списка
+// Г°Г Г§ГўГ®Г°Г®ГІ Г±ГЇГЁГ±ГЄГ 
 
 void LinkedList::reverse()
 {
